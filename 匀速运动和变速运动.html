@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    /*#div1
+    {
+        width:200px;
+        height:200px;
+        background: red;
+        position: absolute;  
+        left: 0;
+        top: 50px;
+    }*/
+    #div2
+    {
+        width: 200px;
+        height: 200px;
+        background: green;
+        position:absolute;
+        left:0;
+        top: 50px;
+    }
+    #div3        /* 用于测试，是否完全到300 */
+    {
+        width: 1px;
+        height: 300px;
+        position: absolute;
+        left: 900px;
+        background: black;
+    }
+    </style>
+    <script>
+    /*
+    window.onload=function ()  //匀速运动
+    {
+        var oDiv=document.getElementById('div1');
+        var oBtn=document.getElementById('btn1');
+        var timer=null;
+        clearInterval(timer);
+        oBtn.onclick=function ()
+        {
+           timer=setInterval(
+               function ()
+               {
+                   oDiv.style.left=oDiv.offsetLeft+10+'px';
+               }
+               ,30);
+        }
+
+    }
+    */
+    window.onload=function ()//变速运动
+    {
+        var oDiv=document.getElementById('div2');
+        var oBtn2=document.getElementById('btn2');
+        var timer=null;
+        clearInterval(timer);
+        oBtn2.onclick=function ()
+        {
+            clearInterval(timer);
+            timer=setInterval(
+            function()
+            {
+                var speed=0;
+                speed=(900-oDiv.offsetLeft)/10;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);/* 向上向下取整 */
+                oDiv.style.left=oDiv.offsetLeft+speed+'px';
+            }
+            ,30);
+        }
+
+    }
+    </script>
+</head>
+<body>
+<!-- <input type="button" value="start" id="btn1">
+<div id="div1">
+</div> -->
+<input type="button" value="start" id="btn2">
+<div id="div2">
+</div>
+<div id="div3">
+</div>
+</body>
+</html>
