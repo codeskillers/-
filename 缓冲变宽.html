@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #div1
+    {
+        width: 200px;
+        height: 200px;
+        background: green;
+        margin: 10px;
+    }
+    #div2
+    {
+        width: 200px;
+        height: 200px;
+        background: green;
+        margin: 10px;
+    }
+    #div3
+    {
+        width: 200px;
+        height: 200px;
+        background: green;
+        margin: 10px;
+    }
+    </style>
+    <script>
+        window.onload=function ()
+        {
+            var iDiv=document.getElementsByTagName('div');
+            
+            for(var i=0;i<iDiv.length;i++)
+            {
+                iDiv[i].timer=null;
+            iDiv[i].onmouseover=function ()
+            {
+                expand(this,400);
+            }
+            iDiv[i].onmouseout=function ()
+            {
+                expand(this,200);
+            }
+            }
+        }
+        function expand(obj,iTarget)
+        {
+           clearInterval(obj.timer);
+            obj.timer=setInterval(
+            function ()
+            {
+                var speed;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                speed=(iTarget-obj.offsetWidth)/6;
+                if(obj.offsetWidth==iTarget)
+                {
+                    clearInterval(obj.timer);
+                }
+                else
+                {
+                   obj.style.width=obj.offsetWidth+speed+'px';
+                }
+            }
+           ,30);
+        }
+    </script>
+</head>
+<body>
+<div id="div1" onmouseover="expand()"></div>
+<div id="div2" onmouseover="expand()"></div>
+<div id="div3" onmouseover="expand()"></div>
+</body>
+</html>
