@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      #div1
+      {
+          margin-left: 40px;
+      }
+      #div1 input
+      {
+         margin-left: 20px;
+      }
+    </style>
+    <script>
+         /*  var oTxt1=document.getElementById('txt1');
+          var oTxt2=document.getElementById('txt2'); */
+          function sb1()
+          {
+            var oTxt1=document.getElementById('txt1');
+            var oTxt2=document.getElementById('txt2');
+              if(oTxt1.value.trim()==''||isNaN(oTxt1.value.trim()))
+              {
+                    alert("账号错误");
+                    oTxt1.focus();
+                    return false;
+              }
+              if(oTxt2.value.trim()==''||oTxt2.value.trim().length<6)
+              {
+                    alert("密码错误");
+                    oTxt2.focus();
+                    return false;
+              }
+              return true;
+          }
+    </script>
+</head>
+<body>
+<form method="POST" id="frm1" onsubmit="return sb1()">
+账号:<input type="text" name="usercount" id="txt1"><br>
+密码:<input type="text" name="password" id="txt2"><br>
+<div id="div1">
+<input type="reset" value="重置" id="rst1"><input type="submit" value="提交" id="sub1" >
+</div>
+</form>
+</body>
+</html>
